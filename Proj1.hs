@@ -11,22 +11,21 @@ import Data.List
 
 -------type synonyms------- 
 
-type answer = [Card]
-type guess = [Card]
-type feedback = (Int,Int,Int,Int,Int)	
+type Answer = [Card]
+type Guess = [Card]
+type Feedback = (Int,Int,Int,Int,Int)	
 -- GameState stores number of cards in the answer and all the valid guesses
-data GameState = GameState Int [guess] 
+data GameState = GameState Int [Guess] 
 
 
 
-feedback :: answer -> guess -> feedback
+feedback :: Answer -> Guess -> Feedback
 feedback _ _ = (0,0,0,0,0)
 
-initialGuess :: Int -> (guess, GameState)
+initialGuess :: Int -> (Guess, GameState)
 initialGuess _ = ([Card Club R2, Card Heart Ace], 
-	(2,[[Card Club R2, Card Heart Ace], [Card Club R3, Card Heart Ace]]))
+	(GameState 2 [[Card Club R2, Card Heart Ace], [Card Club R3, Card Heart Ace]]))
 
-nextGuess :: (guess,GameState) → feedback → (guess,GameState)
+nextGuess :: (Guess,GameState) -> Feedback -> (Guess,GameState)
 nextGuess _ _ = ([Card Club R2, Card Heart Ace], 
-	(2,[[Card Club R2, Card Heart Ace], [Card Club R3, Card Heart Ace]]))
-
+	(GameState 2 [[Card Club R2, Card Heart Ace], [Card Club R3, Card Heart Ace]]))
