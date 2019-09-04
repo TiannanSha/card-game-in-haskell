@@ -67,7 +67,7 @@ nextGuess (gs, GameState fs pastGss posGss) f
       newPastGss = gs:pastGss
       newPosGss = [posGs | posGs<-posGss, isConsistent posGs newFs newPastGss]
     in 
-      (head newPosGss, GameState newFs newPastGss newPosGss)
+      (newPosGss!!(length newPosGss `div` 2), GameState newFs newPastGss newPosGss)
 -- TODO: use a smart way to pick a guess among newPosGss
 
 isConsistent :: GuessCards->[Feedback]->[GuessCards]->Bool
